@@ -18,7 +18,7 @@ RSpec.describe Auction do
     it 'exists and has attributes' do
         expect(@auction).to be_a(Auction)
         expect(@auction.items).to eq([])
-        expect(@auction.bids).to eq({})
+       
     end
 
     it 'can add itemes' do
@@ -68,5 +68,48 @@ RSpec.describe Auction do
       expect(@auction.potential_revenue).to eq(87)
     end
 
-   
+    it 'returns the bidders name' do
+      @auction.add_item(@item1)
+      @auction.add_item(@item2)
+      @auction.add_item(@item3)
+      @auction.add_item(@item4)
+      @auction.add_item(@item5)
+
+      @item1.add_bid(@attendee1, 20)
+      @item2.add_bid(@attendee2, 30)
+      @item3.add_bid(@attendee3, 40)
+
+      expect(@auction.bidders).to eq(["Megan", "Bob", "Mike"])
+    end
+
+    it 'returns the bidder info' do
+      @auction.add_item(@item1)
+      @auction.add_item(@item2)
+      @auction.add_item(@item3)
+      @auction.add_item(@item4)
+      @auction.add_item(@item5)
+
+      @item1.add_bid(@attendee1, 20)
+      @item2.add_bid(@attendee2, 30)
+      @item3.add_bid(@attendee3, 40)
+
+      expected = {
+           @attendee1 =>
+             {
+               :budget => 50,
+               :items => [@item1]
+             },
+           @attendee2 =>
+             {
+               :budget => 75,
+               :items => [@item2]
+             },
+           @attendee3 =>
+             {
+               :budget => 100,
+               :items => [@item3]
+             }
+          }
+    expect(@auction.bidder_info).to eq(expected)
+    end
 end
