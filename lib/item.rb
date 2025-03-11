@@ -14,4 +14,6 @@ class Item
         @bids.values.max
     end
 
+   
+
 end
