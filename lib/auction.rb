@@ -28,4 +28,6 @@ class Auction
             item.bids.values.max.to_i
         end
     end 
+
+    
 end
