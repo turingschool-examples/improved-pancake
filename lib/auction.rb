@@ -29,5 +29,11 @@ class Auction
         end
     end 
 
-    
+    def bidders 
+        @items.flat_map do |item|  #used to extract the names of bidders from all items in auction and while flattening the arrays into one.
+            item.bids.keys.map do |attendee|  #Retireves keys of bids hash for each item and maps over them to get the names of the attendees who placed bids.
+                attendee.name #finds the attendee by name
+            end
+        end.uniq #enumerable that makes sure names aren't doubled 
+    end
 end

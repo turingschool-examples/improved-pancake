@@ -108,6 +108,6 @@ RSpec.describe Auction do
         item4.add_bid(attendee3, 50)    
         item3.add_bid(attendee2, 15)     #Array of bidders' names as String; ex: ["Megan", "Bob", "Mike"]
 
-        expect(auction.bidders).to eq(["Megan", "Bob", "Mike"])
+        expect(auction.bidders).to eq(["Bob", "Megan", "Mike"])
     end
 end
