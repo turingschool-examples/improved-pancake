@@ -1,9 +1,9 @@
 class Auction
-    attr_reader :items, :bids
+    attr_reader :items
 
     def initialize
         @items = []
-        @bids = {}
+        
     end
 
     def add_item(item)
@@ -26,6 +26,30 @@ class Auction
       @items.sum do |item|
         item.current_high_bid.to_i
       end
+    end
+
+    def bidders
+      all_bidders = []
+      @items.each do |item|
+        item.bids.each_key do |attendee|
+          all_bidders << attendee.name
+        end
+      end
+      all_bidders
+    end
+    
+    def bidder_info
+      hash = {}
+      @items.each do |item|
+        item.bids.each do |attendee, budget|
+          if hash[attendee]
+            hash[attendee][:items] << item
+          else
+            hash[attendee] = {:budget => attendee.budget, :items => [item]}
+          end
+        end
+      end
+      hash
     end
     
 end
