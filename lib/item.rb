@@ -10,4 +10,8 @@ class Item
       @bids[attendee] = budget
 
     end
+
+    def current_high_bid
+      @bids.values.max
+    end
 end
