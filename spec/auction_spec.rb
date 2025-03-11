@@ -81,6 +81,6 @@ RSpec.describe Auction do
         item1.add_bid(attendee1, 22)            #is the sum of each item's highest bid.
         item3.add_bid(attendee2, 15)
 
-        
+        expect(auction.potential_revenue).to eq(87)
     end
 end
