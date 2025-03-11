@@ -14,6 +14,7 @@ class Auction
         @items.each do |item|
           result << item.name
         end
-
     end
+
+    
 end
