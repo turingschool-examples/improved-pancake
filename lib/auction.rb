@@ -15,6 +15,4 @@ class Auction
           result << item.name
         end
     end
-
-    
 end

@@ -1,4 +1,6 @@
 require './lib/item'
+require './lib/attendee'
+require './lib/auction'
 require 'pry'
 
 RSpec.describe Item do
@@ -37,6 +39,8 @@ RSpec.describe Item do
         item1.add_bid(attendee2, 20)
         item1.add_bid(attendee1, 22)
 
-        expect(item1.bids).to eq({attendee2 => 20, attendee1 => 22})
+        expected = ({attendee2 => 20, attendee1 => 22})
+
+        expect(item1.bids).to eq(expected)
     end
 end
