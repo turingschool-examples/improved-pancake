@@ -22,4 +22,10 @@ class Auction
             item.bids.empty?
         end
     end
+
+    def potential_revenue
+        @items.sum do |item|
+            item.bids.values.max.to_i
+        end
+    end 
 end

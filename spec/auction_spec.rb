@@ -53,10 +53,10 @@ RSpec.describe Auction do
  
         item1.add_bid(attendee2, 20)
         item1.add_bid(attendee1, 22)            #`unpopular_items` are those items which have no bids.
-        item3.add_bid(attendee2, 15)
+        item4.add_bid(attendee3, 50)
         # binding.pry
 
-        expect(auction.unpopular_items).to eq([item2, item4, item5])
+        expect(auction.unpopular_items).to eq([item2, item3, item5])
     end
 
     it 'calculates potential revenue' do
@@ -78,8 +78,10 @@ RSpec.describe Auction do
         auction.add_item(item5)
  
         item1.add_bid(attendee2, 20)
-        item1.add_bid(attendee1, 22)            #is the sum of each item's highest bid.
+        item1.add_bid(attendee1, 22) 
+        item4.add_bid(attendee3, 50)    #is the sum of each item's highest bid.
         item3.add_bid(attendee2, 15)
+   
 
         expect(auction.potential_revenue).to eq(87)
     end
